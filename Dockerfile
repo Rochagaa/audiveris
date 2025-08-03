@@ -3,11 +3,10 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Instalar dependências necessárias
-RUN apt-get update && apt-get install -y \
-    wget \
-    unzip \
-    ttf-dejavu \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends wget unzip fontconfig && \
+    rm -rf /var/lib/apt/lists/*
+
 
 # Baixar e extrair o Audiveris
 RUN wget https://github.com/Audiveris/audiveris/releases/download/5.3.1/audiveris-5.3.1.zip && \
